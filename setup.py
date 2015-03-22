@@ -18,5 +18,5 @@ setup(
     author_email='euforia@gmail.com',
     license="GPL",
     install_requires=INSTALL_REQUIRES,
-    packages=["otsdb_pandas"]
+    packages=["opentsdb_pandas"]
 )
