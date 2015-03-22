@@ -1,14 +1,15 @@
 opentsdb-pandas
 ============
-Library to convert OpenTSDB data to pandas datastructures for analysis.  
+Library to convert OpenTSDB data to pandas datastructures for analysis.  It also allows to name series based on metadata returned in the response.
 
 
 ### Usage
     
     from opentsdb_pandas import OpenTSDBResponse
 
-    tsdb_url = "http://my.opentsdb/api/query"
     
+    tsdb_url = "http://my.opentsdb/api/query"
+
     resp = requests.get(tsdb_url+"?m=sum:nginx.stubstatus.request{host=*}&start=3m-ago")
     
     oResp = OpenTSDBResponse(resp.text)
@@ -16,5 +17,8 @@ Library to convert OpenTSDB data to pandas datastructures for analysis.
     # Get a DataFrame    
     df = oResp.DataFrame()
 
-    # Get a DataFrame with custom series names
+    # Get a DataFrame with custom series names. In this case set it to 
+    # the short hostname.
     df = oResp.DataFrame("!lambda x: x['tags.host'].split('.')[0]")
+
+    print df
