@@ -5,7 +5,7 @@ Library to convert OpenTSDB data to pandas datastructures for analysis.  It also
 
 ### Usage
     
-    from opentsdb_pandas import OpenTSDBResponse
+    from opentsdb_pandas.response import OpenTSDBResponse
 
     
     tsdb_url = "http://my.opentsdb/api/query"
@@ -14,11 +14,15 @@ Library to convert OpenTSDB data to pandas datastructures for analysis.  It also
     
     oResp = OpenTSDBResponse(resp.text)
 
-    # Get a DataFrame    
-    df = oResp.DataFrame()
+    #
+    # Get a DataFrame with epoch converted to pandas datetime.   
+    #
+    df = oResp.DataFrame(convertTime=True)
 
+    #
     # Get a DataFrame with custom series names. In this case set it to 
     # the short hostname.
+    #
     df = oResp.DataFrame("!lambda x: x['tags.host'].split('.')[0]")
 
     print df
