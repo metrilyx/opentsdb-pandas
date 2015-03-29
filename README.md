@@ -12,6 +12,9 @@ Library to convert OpenTSDB data to pandas datastructures for analysis.  It also
 
     resp = requests.get(tsdb_url+"?m=sum:nginx.stubstatus.request{host=*}&start=3m-ago")
     
+    #
+    # This can be a string, list or tuple
+    #
     oResp = OpenTSDBResponse(resp.text)
 
     #
