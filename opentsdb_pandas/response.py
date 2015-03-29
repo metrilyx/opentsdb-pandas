@@ -62,7 +62,9 @@ class OpenTSDBResponseSerie(object):
 
 
     def __flattenedMetadata(self):
-        """ Flattens all metadata which is used for normalization """
+        """ 
+            Flattens all metadata which is used for normalization 
+        """
         return dict([("metric", self.metric)] +
             [("tags.%s" % (k), v) for k, v in self.tags.items()])
 
@@ -86,6 +88,10 @@ class OpenTSDBResponse(object):
     """ Complete OpenTSDB response """
 
     def __init__(self, otsdbResp):
+        """
+            Params:
+                otsdbResp : raw opentsdb response as a str, list or tuple.
+        """
         if isinstance(otsdbResp, str):
             # string response       
             self._series = [ OpenTSDBResponseSerie(**s) for s in json.loads(otsdbResp) ]
@@ -97,7 +103,9 @@ class OpenTSDBResponse(object):
 
     @property
     def series(self):
-        """ Use iterator for better memory management """
+        """ 
+            Use iterator for better memory management 
+        """
         for s in self._series:
             yield s
 
