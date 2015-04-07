@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 NAME        = "opentsdb_pandas"
 VERSION     = "0.0.1"
-URL         = "https://github.com/euforia/" + NAME
+URL         = "https://github.com/metrilyx/" + NAME
 DESCRIPTION = "Library to convery OpenTSDB data to pandas datastructures."
 
 INSTALL_REQUIRES = [ p for p in open('requirements.txt').read().split('\n') if p != '' and not p.startswith('#') ]

@@ -32,8 +32,9 @@ class OpenTSDBResponseSerie(object):
 
     def alias(self, functOrStr):
         """
-            User specified alias using lambda functions and string formatting.
-            This function fails silently
+            User specified alias using lambda functions and string formatting using
+            metadata provided by opentsdb.
+            This function fails silently.
 
             Params:
                 functOrStr :    lambda function or python string format. When using lambda
@@ -93,6 +94,9 @@ class OpenTSDBResponse(object):
                 otsdbResp : raw opentsdb response as a str, list or tuple.
         """
         if isinstance(otsdbResp, str) or isinstance(otsdbResp, unicode):
+            resp = json.loads(otsdbResp)
+            if isinstance(resp, dict):
+                raise RuntimeError(otsdbResp)
             # string response       
             self._series = [ OpenTSDBResponseSerie(**s) for s in json.loads(otsdbResp) ]
         elif isinstance(otsdbResp, list) or isinstance(otsdbResp, tuple):
