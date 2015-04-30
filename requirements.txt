@@ -1,3 +1,3 @@
 numpy
 pandas
-ujson==1.33
+ujson>=1.33

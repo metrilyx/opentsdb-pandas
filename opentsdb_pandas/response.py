@@ -102,6 +102,7 @@ class OpenTSDBResponse(object):
         else:
             raise RuntimeError("Invalid type: %s" % (type(otsdbResp)))
 
+
     @property
     def series(self):
         """ 
@@ -109,6 +110,7 @@ class OpenTSDBResponse(object):
         """
         for s in self._series:
             yield s
+
 
     def DataFrame(self, aliasTransform=None, convertTime=False):
         """
