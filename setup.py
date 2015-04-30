@@ -17,6 +17,7 @@ setup(
     author='euforia',
     author_email='euforia@gmail.com',
     license="GPL",
+    setup_requires=["numpy"],
     install_requires=INSTALL_REQUIRES,
     packages=["opentsdb_pandas"]
 )
