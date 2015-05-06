@@ -28,7 +28,7 @@ Testing has primarily been done with the following configuration:
     
 ### Installation
 
-    pip install https://github.com/metrilyx/opentsdb-pandas.git
+    pip install git+https://github.com/metrilyx/opentsdb-pandas.git
 
 ### Usage
     
