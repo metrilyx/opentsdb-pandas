@@ -1,5 +1,10 @@
 import pandas
-import ujson as json
+
+try:
+    # Use ujson if available.
+    import ujson as json
+except Exception:
+    import json
 
 
 class OpenTSDBResponseSerie(object):
