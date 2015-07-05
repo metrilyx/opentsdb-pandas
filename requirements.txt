@@ -1,3 +1,2 @@
-numpy>=1.7
 pandas
 ujson>=1.33

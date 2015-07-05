@@ -3,7 +3,7 @@ python:
 - 2.7
 before_install:
 - sudo apt-get -y update
-- sudo apt-get -y install ruby ruby-dev make rpm rubygems
+- sudo apt-get -y install ruby ruby-dev make rpm rubygems python-dev
 - gem install fpm --no-ri --no-rdoc
 install:
 - make
