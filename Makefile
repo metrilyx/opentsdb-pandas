@@ -1,4 +1,6 @@
 
+NAME = opentsdb-pandas
+
 BUILD_DIR_BASE = ./build
 
 DEB_PANDAS_DEPS = -d 'python-dateutil' -d 'python-numpy >= 1.7' -d 'python-tz >= 2011k'
@@ -29,7 +31,7 @@ PYTHON_LIB_DIR = /opt/metrilyx/lib/python2.7/site-packages
 	cd ${BUILD_DIR_BASE}/ubuntu && fpm -s python -t deb --python-install-lib ${PYTHON_LIB_DIR} ujson
 
 .rpm: .pandas_rpm .ujson_rpm
-	cd ${BUILD_DIR_BASE}/el && fpm -s python -t rpm --python-install-lib ${PYTHON_LIB_DIR} ../../setup.py
+	cd ${BUILD_DIR_BASE}/el && fpm -s python -t rpm -n python-${NAME} --python-install-lib ${PYTHON_LIB_DIR} ../../setup.py
 
 .deb: .pandas_deb .ujson_deb
 	cd ${BUILD_DIR_BASE}/ubuntu && fpm -s python -t deb --python-install-lib ${PYTHON_LIB_DIR} ../../setup.py
