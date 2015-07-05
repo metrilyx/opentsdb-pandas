@@ -17,11 +17,19 @@ DEB_PANDAS_DEPS = -d 'python-dateutil' -d 'python-numpy >= 1.7' -d 'python-tz >=
 .pandas_deb:
 	[ -d ${BUILD_DIR_BASE}/ubuntu ] || mkdir -p ${BUILD_DIR_BASE}/ubuntu
 	cd ${BUILD_DIR_BASE}/ubuntu && fpm --verbose -s python -t deb --no-python-dependencies ${DEB_PANDAS_DEPS} pandas
-	
-.rpm: .pandas_rpm
+
+.ujson_rpm:
+	[ -d ${BUILD_DIR_BASE}/el ] || mkdir -p ${BUILD_DIR_BASE}/el
+	cd ${BUILD_DIR_BASE}/el && fpm --verbose -s python -t rpm ujson
+
+.ujson_deb:
+	[ -d ${BUILD_DIR_BASE}/ubuntu ] || mkdir -p ${BUILD_DIR_BASE}/ubuntu
+	cd ${BUILD_DIR_BASE}/ubuntu && fpm --verbose -s python -t deb ujson
+
+.rpm: .pandas_rpm .ujson_rpm
 	cd ${BUILD_DIR_BASE}/el && fpm -s python -t rpm ../../setup.py
 
-.deb: .pandas_deb
+.deb: .pandas_deb .ujson_deb
 	cd ${BUILD_DIR_BASE}/ubuntu && fpm -s python -t deb ../../setup.py
 
 all: .clean .install
