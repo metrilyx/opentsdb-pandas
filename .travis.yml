@@ -5,25 +5,5 @@ before_install:
 - sudo apt-get -y update
 - sudo apt-get -y install ruby ruby-dev make rpm rubygems python-dev
 - gem install fpm --no-ri --no-rdoc
-install:
-- make
 script:
-- make .rpm
-- make .deb
-deploy:
-  - provider: packagecloud
-    repository: metrilyx
-    username: metrilyx
-    local-dir: build/ubuntu
-    dist: ubuntu/trusty
-    skip_cleanup: true
-    token:
-      secure: H1+L5QG4toQbR4cEpFuKIzXb01hjxr0oJ6wr+TTW6eiTG+/Nm3XNRSc8kEEgxpt2vfXGYSQjNdVbLFeI4Ko/CTb4olMhsB++PHRgbaiMvhPKmtHTeAtxJObiy4AFOKmc0vdmMKadITh8pKGum5EqlODgArJeZ20pnNA1d80utbY=
-  - provider: packagecloud
-    repository: metrilyx
-    username: metrilyx
-    local-dir: build/el
-    dist: el/7
-    skip_cleanup: true
-    token:
-      secure: H1+L5QG4toQbR4cEpFuKIzXb01hjxr0oJ6wr+TTW6eiTG+/Nm3XNRSc8kEEgxpt2vfXGYSQjNdVbLFeI4Ko/CTb4olMhsB++PHRgbaiMvhPKmtHTeAtxJObiy4AFOKmc0vdmMKadITh8pKGum5EqlODgArJeZ20pnNA1d80utbY=
+- make
