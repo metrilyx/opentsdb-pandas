@@ -32,28 +32,30 @@ Testing has primarily been done with the following configuration:
 
 ### Usage
     
-    import requests
-    
-    from opentsdb_pandas.response import OpenTSDBResponse
+```python
+import requests
 
-    
-    tsdb_url = "http://my.opentsdb/api/query"
-    resp = requests.get(tsdb_url+"?m=sum:nginx.stubstatus.request{host=*}&start=3m-ago")
-    
-    #
-    # This can be a string, list or tuple
-    #
-    oResp = OpenTSDBResponse(resp.text)
+from opentsdb_pandas.response import OpenTSDBResponse
 
-    #
-    # Get a DataFrame with epoch converted to pandas datetime.   
-    #
-    df = oResp.DataFrame(convertTime=True)
 
-    #
-    # Get a DataFrame with custom column names. In this case set it to 
-    # the short hostname.
-    #
-    df = oResp.DataFrame("!lambda x: x['tags.host'].split('.')[0]")
+tsdb_url = "http://my.opentsdb/api/query"
+resp = requests.get(tsdb_url+"?m=sum:nginx.stubstatus.request{host=*}&start=3m-ago")
 
-    print df
+#
+# This can be a string, list or tuple
+#
+oResp = OpenTSDBResponse(resp.text)
+
+#
+# Get a DataFrame with epoch converted to pandas datetime.   
+#
+df = oResp.DataFrame(convertTime=True)
+
+#
+# Get a DataFrame with custom column names. In this case set it to 
+# the short hostname.
+#
+df = oResp.DataFrame("!lambda x: x['tags.host'].split('.')[0]")
+
+print df
+```
